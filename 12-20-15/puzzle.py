@@ -25,13 +25,27 @@ def main():
     num_words = len(words)
     print("There are {} words.\n".format(num_words))
 
+    j = 0
+    six_words = []
     for i in range(num_words):
         num_chars = len(words[i])
-        # Not worrying about excluding things that begin with uppercase
-        for j in range(num_chars-2):
-            if ((ord(words[i][j])+1) == ord(words[i][j+1])) and ((ord(words[i][j])+2) == ord(words[i][j+2])):
-                print(words[i], end="")
-                break
+        if (num_chars ==7): # Newline is included in the number of characters
+            # Remove \n
+            temp = words[i][0:6]
+            # Append reverse form of word to end
+            six_words.append(temp[::-1])
+            print(six_words[j])
+            j = j + 1
+    print("\n", j, "six letter words")
+    six_words.sort()
+    # print(six_words)
+
+    for i in range(len(six_words)-3):
+        if six_words[i][0:5] == six_words[i+1][0:5]:
+            if six_words[i][0:5] == six_words[i+2][0:5]:
+                if six_words[i][0:5] == six_words[i+3][0:5]:
+                    print(six_words[i][::-1], six_words[i+1][::-1], six_words[i+2][::-1], six_words[i+3][::-1])
+
 
 
 
