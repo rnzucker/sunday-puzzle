@@ -31,7 +31,7 @@ def main():
         num_chars = len(words[i])
         if (num_chars ==7): # Newline is included in the number of characters
             # Remove \n
-            temp = words[i][0:6]
+            temp = words[i][0:6].rstrip()
             # Append reverse form of word to end
             six_words.append(temp[::-1])
             print(six_words[j])
@@ -41,10 +41,9 @@ def main():
     # print(six_words)
 
     for i in range(len(six_words)-3):
-        if six_words[i][0:5] == six_words[i+1][0:5]:
-            if six_words[i][0:5] == six_words[i+2][0:5]:
-                if six_words[i][0:5] == six_words[i+3][0:5]:
-                    print(six_words[i][::-1], six_words[i+1][::-1], six_words[i+2][::-1], six_words[i+3][::-1])
+        if (six_words[i][0:5] == six_words[i+1][0:5]) and (six_words[i][0:5] == six_words[i+2][0:5]) and\
+                (six_words[i][0:5] == six_words[i+3][0:5]):
+            print(six_words[i][::-1], six_words[i+1][::-1], six_words[i+2][::-1], six_words[i+3][::-1])
 
 
 
