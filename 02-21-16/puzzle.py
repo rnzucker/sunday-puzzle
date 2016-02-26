@@ -29,21 +29,21 @@ def main():
     eight_words = []
     for i in range(num_words):
         num_chars = len(words[i])
-        if (num_chars ==9): # Newline is included in the number of characters
-            # Remove \n
-            temp = words[i][0:6].rstrip()
-            # Append reverse form of word to end
-            eight_words.append(temp[::-1])
-            print(eight_words[j])
-            j = j + 1
-    print("\n", j, "eight letter words")
-    eight_words.sort()
-    # print(eight_words)
+        if num_chars==9: # Newline is included in the number of characters
+            if ((words[i].find('g') != -1) or (words[i].find('G') != -1)):
+                # Remove \n
+                temp = words[i][0:8].rstrip()
+                # Append word to end
+                eight_words.append(temp)
+                print(eight_words[j], eight_words[j][4:7])
+                j = j + 1
+    print("\n", j, "eight letter words with a G\n")
 
-    for i in range(len(eight_words)-3):
-        if (eight_words[i][0:5] == eight_words[i+1][0:5]) and (eight_words[i][0:5] == eight_words[i+2][0:5]) and\
-                (eight_words[i][0:5] == eight_words[i+3][0:5]):
-            print(eight_words[i][::-1], eight_words[i+1][::-1], eight_words[i+2][::-1], eight_words[i+3][::-1])
+
+    for i in range(len(eight_words)-2):
+        if (eight_words[i][0:3] == eight_words[i+1][0:3]) and (eight_words[i][0:3] == eight_words[i+2][0:3]):
+            if (eight_words[i][4:7] == eight_words[i+1][4:7]) and (eight_words[i][4:7] == eight_words[i+2][4:7]):
+                print(eight_words[i], eight_words[i+1], eight_words[i+2])
 
 
 
