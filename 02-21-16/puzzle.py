@@ -42,6 +42,7 @@ def main():
 
     for i in range(len(eight_words)-2):
         if (eight_words[i][0:3] == eight_words[i+1][0:3]) and (eight_words[i][0:3] == eight_words[i+2][0:3]):
+            print(eight_words[i], eight_words[i+1], eight_words[i+2])
             if (eight_words[i][4:7] == eight_words[i+1][4:7]) and (eight_words[i][4:7] == eight_words[i+2][4:7]):
                 print(eight_words[i], eight_words[i+1], eight_words[i+2])
 
