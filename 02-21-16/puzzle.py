@@ -1,4 +1,4 @@
-"""Playing around with Python text modules to do MadLibs
+"""Playing around with Python to solve the NPR Sunday Puzzle
 
 three eight-letter words that are identical in spelling except for
 the fourth letter. Each word contains a G that is pronounced
