@@ -1,4 +1,4 @@
-"""Playing around with Python text modules to do MadLibs
+"""Playing around with Python to solve the NPR Sunday Puzzle
 
 This will look through a list of words in a file to find any
 that have three consecutive letters in adjacent alphabetical
