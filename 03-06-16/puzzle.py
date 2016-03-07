@@ -8,7 +8,8 @@ that is, they're identical except for their first letters, with those first lett
 being adjacent on the keyboard? All five words must be ones that everyone knows.
 Capitalized words and plurals are not allowed. What words are they?
 
-
+Part of solution involves scanning words file for 4-letter words and creating
+a new list with the words, but with the letter order reversed.
 
 """
 
