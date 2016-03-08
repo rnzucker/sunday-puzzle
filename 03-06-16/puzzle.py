@@ -20,9 +20,21 @@ __author__ = 'rnzucker'
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
-ROW1 = 'qwertyuiop'
-ROW2 = 'asdfghjkl'
-ROW3 = 'zxcvbnm'
+ROW1 = 'qwertyuiop'  # Letters, in order, in first row of keyboard
+ROW2 = 'asdfghjkl'   # Letters, in order, in second row of keyboard
+ROW3 = 'zxcvbnm'     # Letters, in order, in third row of keyboard
+
+def all_in_same_row(word_list, i, row):
+    """ Return true if fourth (really, first) letter of this and next four words in this row
+
+    :param word_list: The list of four letter words (reversed)
+    :param i: index where this word and the next four have same first three (really, last) letters
+    :param row: A string of the letters in one keyboard row
+    :return: True if all the reversed words end with letters in this keyboard row
+    """
+    if (word_list[i][3] in row) and (word_list[i+1][3] in row) and (word_list[i+2][3] in row) and\
+            (word_list[i+3][3] in row) and (word_list[i+4][3] in row):
+        return True
 
 def main():
     #
@@ -49,13 +61,17 @@ def main():
     four_chars.sort()
     # print(four_chars)
 
+    # Check first three letters (in reversed form) of five consecutive words to see if they match.
+    # Then check to see if the fourth (actually first) letters are all in the same row of the keyboard
+    # by checking set membership in ROW1, ROW2, or ROW3.
     for i in range(len(four_chars)-4):
         if (four_chars[i][0:3] == four_chars[i+1][0:3]) and (four_chars[i][0:3] == four_chars[i+2][0:3]) and\
                 (four_chars[i][0:3] == four_chars[i+3][0:3]) and (four_chars[i][0:3] == four_chars[i+4][0:3]):
-            if (four_chars[i][3] in ROW2) and (four_chars[i+1][3] in ROW2) and (four_chars[i+2][3] in ROW2) and\
-                    (four_chars[i+3][3] in ROW2) and (four_chars[i+4][3] in ROW2):
+            if all_in_same_row(four_chars, i, ROW1) or all_in_same_row(four_chars, i, ROW2) or\
+                    all_in_same_row(four_chars, i, ROW3):
                 print(four_chars[i][::-1], four_chars[i+1][::-1], four_chars[i+2][::-1], four_chars[i+3][::-1],
                     four_chars[i+4][::-1])
+
 
 
 
