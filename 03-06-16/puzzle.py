@@ -26,16 +26,22 @@ ROW2 = 'asdfghjkl'   # Letters, in order, in second row of keyboard
 ROW3 = 'zxcvbnm'     # Letters, in order, in third row of keyboard
 
 
-def row_in_order(row, sorted_words):
+def row_in_order(sorted_words):
     """ Check to see if the five words have first letters that are adjacent in row
 
     :rtype : Boolean
-    :param row: string of ordered letters for the keyboard row of these words first letters
     :param sorted_words: array of five four letter words, all of whose first letters appear in the same row as
                          the row passed in in the row parameter, and whose last three letters are the same.
                           The words are ordered based upon the order of letters in that keyboard row.
     :return: True if the first letter of the five words are adjacent on the keyboard
     """
+    # Set row to the proper row
+    if sorted_words[0][0] in ROW1:
+        row = ROW1
+    elif sorted_words[0][0] in ROW2:
+        row = ROW2
+    else: # Must be in ROW3. Not handling error case
+        row = ROW3
     loc = row.find(sorted_words[0][0])
     if (sorted_words[1][0] == row[loc + 1]) and (sorted_words[2][0] == row[loc + 2]) and (
         sorted_words[3][0] == row[loc + 3]) \
@@ -43,29 +49,19 @@ def row_in_order(row, sorted_words):
         return True
     return False
 
-def row1_key(letters):
-    """ Used for sorting according to ROW1 order. Returns index of letter's location
+def row_key(letters):
+    """ Used for sorting according to appropriate row order. Returns index of letter's location
 
     :param letters: word whose first letter is being checked
-    :return: index in ROW1
+    :return: index in corresponding row
     """
-    return ROW1.find(letters[0])
+    if letters[0] in ROW1:
+        return ROW1.find(letters[0])
+    elif letters[0] in ROW2:
+        return ROW2.find(letters[0])
+    else: # Must be in ROW3. Not handling error case.
+        return ROW3.find(letters[0])
 
-def row2_key(letters):
-    """ Used for sorting according to ROW2 order. Returns index of letter's location
-
-    :param letters: word whose first letter is being checked
-    :return: index in ROW2
-    """
-    return ROW2.find(letters[0])
-
-def row3_key(letters):
-    """ Used for sorting according to ROW3 order. Returns index of letter's location
-
-    :param letters: word whose first letter is being checked
-    :return: index in ROW3
-    """
-    return ROW3.find(letters[0])
 
 def all_in_same_row(word_list, i, row):
     """ Return true if fourth (really, first) letter of this and next four words in this row
@@ -130,20 +126,9 @@ def main():
                 # Fill five element array of words properly ordered
                 for k in range(5):
                     five_words[k] = four_chars[i][j+k][::-1]
-                if five_words[0][0] in ROW1:
-                    five_words.sort(key=row1_key)
-                    if row_in_order(ROW1, five_words):
-                        print (five_words[0], five_words[1], five_words[2], five_words[3], five_words[4])
-                elif (five_words[0][0] in ROW2):
-                    five_words.sort(key=row2_key)
-                    if row_in_order(ROW2, five_words):
-                        print (five_words[0], five_words[1], five_words[2], five_words[3], five_words[4])
-                elif (five_words[0][0] in ROW3):
-                    five_words.sort(key=row3_key)
-                    if row_in_order(ROW3, five_words):
-                        print (five_words[0], five_words[1], five_words[2], five_words[3], five_words[4])
-
-
+                five_words.sort(key=row_key)
+                if row_in_order(five_words):
+                    print (five_words[0], five_words[1], five_words[2], five_words[3], five_words[4])
 
 
 
