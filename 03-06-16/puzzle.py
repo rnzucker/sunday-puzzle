@@ -20,7 +20,6 @@ __author__ = 'rnzucker'
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
-ROWS = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm']
 ROW1 = 'qwertyuiop'  # Letters, in order, in first row of keyboard
 ROW2 = 'asdfghjkl'   # Letters, in order, in second row of keyboard
 ROW3 = 'zxcvbnm'     # Letters, in order, in third row of keyboard
@@ -109,9 +108,6 @@ def main():
     four_chars[0].sort()
     four_chars[1].sort()
     four_chars[2].sort()
-    # print(four_chars[0])
-    # print(four_chars[1])
-    # print(four_chars[2])
 
     # Check first three letters (in reversed form) of five consecutive words to see if they match.
     # We know that the fourth letter are all in the same row of the keyboard since we have a separate
@@ -122,7 +118,7 @@ def main():
             # Five consecutive words with same last three letters (words are reversed)
             if (four_chars[i][j][0:3] == four_chars[i][j+1][0:3]) and (four_chars[i][j][0:3] == four_chars[i][j+2][0:3]) and\
                     (four_chars[i][j][0:3] == four_chars[i][j+3][0:3]) and (four_chars[i][j][0:3] == four_chars[i][j+4][0:3]):
-                # Fill five element array of words properly ordered
+                # Fill element array of words properly ordered. There can be more than five, so do it dynamically
                 possible_words = []
                 k = 0
                 while (j+k < len_row) and (four_chars[i][j][0:3] == four_chars[i][j+k][0:3]):
