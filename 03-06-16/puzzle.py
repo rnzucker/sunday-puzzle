@@ -27,7 +27,7 @@ ROW3 = 'zxcvbnm'     # Letters, in order, in third row of keyboard
 
 
 def row_in_order(sorted_words):
-    """ Check to see if the five words have first letters that are adjacent in row
+    """ Check to see if the first five words have first letters that are adjacent in row
 
     :rtype : Boolean
     :param sorted_words: array of five four letter words, all of whose first letters appear in the same row as
@@ -44,8 +44,7 @@ def row_in_order(sorted_words):
         row = ROW3
     loc = row.find(sorted_words[0][0])
     if (sorted_words[1][0] == row[loc + 1]) and (sorted_words[2][0] == row[loc + 2]) and (
-        sorted_words[3][0] == row[loc + 3]) \
-            and (sorted_words[4][0] == row[loc + 4]):
+        sorted_words[3][0] == row[loc + 3]) and (sorted_words[4][0] == row[loc + 4]):
         return True
     return False
 
@@ -117,19 +116,22 @@ def main():
     # Check first three letters (in reversed form) of five consecutive words to see if they match.
     # We know that the fourth letter are all in the same row of the keyboard since we have a separate
     # sub-array for each ROW.
-    five_words = [0] * 5
     for i in range(3):
-        for j in range(len(four_chars[i])-4):
+        len_row = len(four_chars[i])
+        for j in range(len_row-4):
             # Five consecutive words with same last three letters (words are reversed)
             if (four_chars[i][j][0:3] == four_chars[i][j+1][0:3]) and (four_chars[i][j][0:3] == four_chars[i][j+2][0:3]) and\
                     (four_chars[i][j][0:3] == four_chars[i][j+3][0:3]) and (four_chars[i][j][0:3] == four_chars[i][j+4][0:3]):
                 # Fill five element array of words properly ordered
-                for k in range(5):
-                    five_words[k] = four_chars[i][j+k][::-1]
-                five_words.sort(key=row_key)
-                if row_in_order(five_words):
-                    print (five_words[0], five_words[1], five_words[2], five_words[3], five_words[4])
-
+                possible_words = []
+                k = 0
+                while (j+k < len_row) and (four_chars[i][j][0:3] == four_chars[i][j+k][0:3]):
+                    possible_words.append(four_chars[i][j+k][::-1])
+                    k += 1
+                possible_words.sort(key=row_key)
+                # We are only interested in the first five words, so we only check those
+                if row_in_order(possible_words[0:5]):
+                    print(possible_words[0:5])
 
 
 
