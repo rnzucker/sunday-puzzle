@@ -9,7 +9,9 @@ being adjacent on the keyboard? All five words must be ones that everyone knows.
 Capitalized words and plurals are not allowed. What words are they?
 
 Part of solution involves scanning words file for 4-letter words and creating
-a new list with the words, but with the letter order reversed.
+a new list with the words, but with the letter order reversed. Also, when the words
+are put back in regular order, need to sort by the order of the keys on the keyboard,
+so a special key function is needed.
 
 """
 
