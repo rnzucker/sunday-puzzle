@@ -25,14 +25,14 @@ def five_consec_consonants(word):
         if word[i] in CONSONANTS: # check to see if letter 0-4 are consonants is a consonant
             if (word[i+1] in CONSONANTS) and (word[i+2] in CONSONANTS) and (word[i+3] in CONSONANTS)\
                 and (word[i+4] in CONSONANTS):
-                # print("  ", word[i], word[i+1], word[i+2], word[i+3], word[i+4])
-                # print("      ", word[4] in CONSONANTS)
                 return True
     return False
 
 
 def main():
-    word_file = open("words.txt", "r")
+    # word_file = open("words.txt", "r")
+    word_file = open("../03-06-16/long-wordsEn.txt", "r")
+    out_file  = open("nine-out.txt", "w")
     words = word_file.readlines()
     num_words = len(words)
     print("There are {} words.\n".format(num_words))
@@ -44,12 +44,14 @@ def main():
         if num_chars==10: # Newline is included in the number of characters
             # Remove \n
             temp = words[i][0:9].rstrip()
+            out_file.write(words[i])
             if five_consec_consonants(temp):
                 # Append word to end
                 nine_words.append(temp)
                 print(nine_words[j])
                 j = j + 1
     print("\n", j, "nine letter words with five consecutive consonants.\n")
+    out_file.close()
 
 
 
