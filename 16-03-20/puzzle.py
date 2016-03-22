@@ -31,6 +31,7 @@ def five_consec_consonants(word):
 
 def main():
     # word_file = open("words.txt", "r")
+    # Switched to using longer word file
     word_file = open("../03-06-16/long-wordsEn.txt", "r")
     out_file  = open("nine-out.txt", "w")
     words = word_file.readlines()
