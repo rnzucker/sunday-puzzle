@@ -1,6 +1,7 @@
 # coding=utf-8
 """ These class and method definitions allow for manipulation of city names.
     They will be useful in the solving of various puzzles for the NPR Sunday Puzzle.
+    Need to update my input files
 """
 
 
