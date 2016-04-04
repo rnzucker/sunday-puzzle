@@ -1,10 +1,14 @@
 """Playing around with Python to solve the NPR Sunday Puzzle
 
-Think of a common nine-letter word that contains five consecutive consonants.
-Take three consecutive consonants out of these five and replace them with vowels
-to form another common nine-letter word. What is it?
-This is part of solving the NPR Sunday Puzzle for Mar. 20, 2016
+Take the word EASY: Its first three letters: E, A, and S, are the fifth
+first, and nineteenth letters, respectively, in the alphabet. If you add
+5 + 1 + 19, you get 25, which is the value of the alphabetical position
+of Y, the last letter of EASY.
 
+Can you think of a common five-letter word that works in the opposite way
+- in which the value of the alphabetical positions of its last four letters
+add up to the value of the alphabetical position of its first letter?
+This is part of solving the NPR Sunday Puzzle for Apr. 3, 2016
 """
 
 import sys, logging
@@ -14,47 +18,30 @@ __author__ = 'rnzucker'
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
-CONSONANTS ='bcdfghjklmnpqrstvwxyz'
-
-def five_consec_consonants(word):
-    """ Return True if there are five consecutive consonants in the word
-    :param word: a nine letter word to check
-    :return: True if there are five consecutive consonants
-    """
-    for i in range(5):
-        if word[i] in CONSONANTS: # check to see if letter 0-4 are consonants is a consonant
-            if (word[i+1] in CONSONANTS) and (word[i+2] in CONSONANTS) and (word[i+3] in CONSONANTS)\
-                and (word[i+4] in CONSONANTS):
-                return True
-    return False
+ALPHABET ='abcdefghijklmnopqrstuvwxyz'
 
 
 def main():
-    # word_file = open("words.txt", "r")
+    word_file = open("words.txt", "r")
     # Switched to using longer word file
-    word_file = open("../03-06-16/long-wordsEn.txt", "r")
-    out_file  = open("nine-out.txt", "w")
+    # word_file = open("../03-06-16/long-wordsEn.txt", "r")
     words = word_file.readlines()
     num_words = len(words)
     print("There are {} words.\n".format(num_words))
 
-    j = 0
-    nine_words = []
     for i in range(num_words):
         num_chars = len(words[i])
-        if num_chars==10: # Newline is included in the number of characters
+        if num_chars==6: # Newline is included in the number of characters
             # Remove \n
-            temp = words[i][0:9].rstrip()
-            out_file.write(words[i])
-            if five_consec_consonants(temp):
-                # Append word to end
-                nine_words.append(temp)
-                print(nine_words[j])
-                j = j + 1
-    print("\n", j, "nine letter words with five consecutive consonants.\n")
-    out_file.close()
-
-
+            temp = words[i][0:6].rstrip()
+            # Find the number value of each letter
+            num_1 = ALPHABET.find(temp[0]) + 1
+            num_2 = ALPHABET.find(temp[1]) + 1
+            num_3 = ALPHABET.find(temp[2]) + 1
+            num_4 = ALPHABET.find(temp[3]) + 1
+            num_5 = ALPHABET.find(temp[4]) + 1
+            if num_1 == (num_2 + num_3 + num_4 + num_5):
+                print(temp)
 
 
 # Check for interactive session
