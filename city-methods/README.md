@@ -1,1 +1,1 @@
-
+This is a series of classes and methods to assist with the Sunday Puzzle when it involves cities, usually state or world capitals, or major US cities. Probably should be changed to have the class keep the list of cities as an instance variable, and when need a list of e.g., state captials with six letters, return such a list. Currently there is a method that just returns the number of letters.
