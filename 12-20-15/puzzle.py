@@ -1,9 +1,11 @@
 """Playing around with Python to solve the NPR Sunday Puzzle
 
-This will look through a list of words in a file to find any
-that have three consecutive letters in adjacent alphabetical
-order. An example are "n", "o", and "p" in "canopy". This is
-part of solving the NPR Sunday Puzzle for Nov. 11, 2015
+Think of four common six-letter words that all end in the same five letters
+in the same order. And the first letters of these four words are consecutive
+consonants in the alphabet (like B, C, D, F). No other common six-letter words
+end with these five letters. What are the words?
+
+https://www.npr.org/2015/12/20/460421632/yule-never-guess-the-theme-to-this-weeks-song-filled-puzzle
 
 """
 
