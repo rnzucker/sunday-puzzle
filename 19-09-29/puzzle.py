@@ -4,6 +4,9 @@ Think of a word that has five vowels — two E's, an I, O, and U. Curiously,
 every vowel except the "I" is pronounced like a short "I." And the "I" in
 the word is not pronounced at all. What word is it?
 
+This should print out every word that has exactly two E's, and one I, one O,
+and one U. From there the reader must eyeball it.
+
 """
 
 import sys, logging
