@@ -35,6 +35,7 @@ def main():
                 first_e = words[i].find('e')
                 if (words[i].find('e', first_e+1) != -1):
                     # Know that there is at least one character after the first 'e' due to the newline
+                    # Know that there are at least two e's. There could be more than two though. Should be fixed.
                     if ((words[i].find('i') == words[i].rfind('i')) and (words[i].find('o') == words[i].rfind('o')) and
                         (words[i].find('u') == words[i].rfind('u'))):
                         # Making sure there is only one i, o, and u
